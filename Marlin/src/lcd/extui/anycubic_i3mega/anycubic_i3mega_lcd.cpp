@@ -555,7 +555,7 @@ void AnycubicTFTClass::GetCommandFromTFT() {
         TFTstrchr_pointer = strchr(TFTcmdbuffer[TFTbufindw], 'A');
         a_command = ((int)((strtod(&TFTcmdbuffer[TFTbufindw][TFTstrchr_pointer - TFTcmdbuffer[TFTbufindw] + 1], nullptr))));
 
-        #if ENABLED(ANYCUBIC_LCD_DEBUG)
+        #if ENABLED(_LCD_DEBUG)
           if ((a_command > 7) && (a_command != 20))   // No debugging of status polls, please!
             SERIAL_ECHOLNPAIR("TFT Serial Command: ", TFTcmdbuffer[TFTbufindw]);
         #endif
@@ -817,7 +817,7 @@ void AnycubicTFTClass::GetCommandFromTFT() {
 
               if (strlen(commandStr) > 0) {
                 sprintf_P(fullCommandStr, PSTR("G91\n%s\nG90"), commandStr);
-                #if ENABLED(ANYCUBIC_LCD_DEBUG)
+                #if ENABLED(_LCD_DEBUG)
                   SERIAL_ECHOPGM("TFT Serial Debug: A22 Move final request with gcode... ");
                   SERIAL_ECHOLN(fullCommandStr);
                 #endif
@@ -978,7 +978,7 @@ void AnycubicTFTClass::ResumePrint() {
   #if ENABLED(SDSUPPORT)
     #if ENABLED(FILAMENT_RUNOUT_SENSOR)
       if (READ(FIL_RUNOUT1_PIN)) {
-        #if ENABLED(ANYCUBIC_LCD_DEBUG)
+        #if ENABLED(_LCD_DEBUG)
           SERIAL_ECHOLNPGM("TFT Serial Debug: Resume Print with filament sensor still tripped... ");
         #endif
 
