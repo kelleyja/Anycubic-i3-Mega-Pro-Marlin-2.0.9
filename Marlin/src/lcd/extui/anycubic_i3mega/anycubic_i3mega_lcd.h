@@ -1,5 +1,5 @@
 /**
- * _i3mega_lcd.h  --- Support for  i3 Mega TFT
+ * anycubic_i3mega_lcd.h  --- Support for Anycubic i3 Mega TFT
  * Created by Christian Hopp on 09.12.17.
  * Improved by David Ramiro
  * Converted to ExtUI by John BouAntoun 21 June 2020
@@ -26,7 +26,7 @@
 #define TFTBUFSIZE 4
 #define TFT_MAX_CMD_SIZE 96
 
-enum MediaPrintState {
+enum AnycubicMediaPrintState {
   AMPRINTSTATE_NOT_PRINTING,
   AMPRINTSTATE_PRINTING,
   AMPRINTSTATE_PAUSE_REQUESTED,
@@ -34,7 +34,7 @@ enum MediaPrintState {
   AMPRINTSTATE_STOP_REQUESTED
 };
 
-enum MediaPauseState {
+enum AnycubicMediaPauseState {
   AMPAUSESTATE_NOT_PAUSED,
   AMPAUSESTATE_PARKING,
   AMPAUSESTATE_PARKED,
@@ -45,9 +45,9 @@ enum MediaPauseState {
   AMPAUSESTATE_REHEAT_FINISHED
 };
 
-class TFTClass {
+class AnycubicTFTClass {
 public:
-  TFTClass();
+  AnycubicTFTClass();
   static void OnSetup();
   static void OnCommandScan();
   static void OnKillTFT();
@@ -66,8 +66,8 @@ private:
   static int serial3_count;
   static char *TFTstrchr_pointer;
   static uint8_t SpecialMenu;
-  static MediaPrintState mediaPrintingState;
-  static MediaPauseState mediaPauseState;
+  static AnycubicMediaPrintState mediaPrintingState;
+  static AnycubicMediaPauseState mediaPauseState;
 
   static float CodeValue();
   static bool CodeSeen(char);
@@ -91,5 +91,5 @@ private:
   static char SelectedFile[FILENAME_LENGTH];
 };
 
-extern TFTClass TFT;
+extern AnycubicTFTClass AnycubicTFT;
 extern const char G28_STR[];
